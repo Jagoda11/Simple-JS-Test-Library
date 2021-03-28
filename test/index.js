@@ -53,11 +53,11 @@ _app.countTests = function(){
   };
 
 //run all the tests, collecting the errors and successes
-_app.runTest() = function () {
+_app.runTests = function () {
   const errors = [];
-  const successes = 0;
+  let successes = 0;
   const limit = _app.countTests();
-  const counter = 0;
+  let counter = 0;
   for (const key in _app.tests) {
     if (_app.tests.hashOwnProperty(key)) {
       const subTests = _app.tests[key];
@@ -71,7 +71,7 @@ _app.runTest() = function () {
             try {
               testValue(function () {
                 //if it calls back : without throwing : it succeeded
-                console.log('\x1b[32m%s\x1b[0m',tmpTestName);
+                console.log('\x1b[32m%s\x1b[0m',tempTestName);
                 counter++;
                 successes++;
                 if(counter == limit){
@@ -83,7 +83,7 @@ _app.runTest() = function () {
                     'name' : testName,
                     'error' : e
           });
-          console.log('\x1b[31m%s\x1b[0m',tmpTestName);
+          console.log('\x1b[31m%s\x1b[0m',tempTestName);
                 counter++;
                 if(counter == limit){
                     _app.produceTestReport(limit,successes,errors);
@@ -92,6 +92,7 @@ _app.runTest() = function () {
       })();
     }
   }
+ }
 };
 
 // Product a test outcome report
@@ -122,3 +123,6 @@ _app.produceTestReport = function(limit,successes,errors){
     console.log("--------END TEST REPORT--------");
   
   };
+
+  // Run the tests
+_app.runTests();
