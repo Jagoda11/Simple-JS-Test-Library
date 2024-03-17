@@ -1,21 +1,21 @@
-// test-runner
+// 🚀 test-runner
 
-//dependecies
+// 📦 dependencies
 const lib = require('./../app/lib.js');
 const assert = require('assert');
 const mapStatusCode = require('./mapStatusCode');
 
-//app logic for test runner
+// 🧠 app logic for test runner
 _app = {};
 
-//container for the test
+// 📋 container for the test
 _app.tests = {
   unit: {},
 };
 
 mapStatusCode(_app);
 
-//assert get a number is returning a number
+// ✅ assert get a number is returning a number
 _app.tests.unit['lib.getNumber should return number'] = function (done) {
   //when test is done running it should return : done(convention)
   const val = lib.getNumber();
@@ -23,7 +23,7 @@ _app.tests.unit['lib.getNumber should return number'] = function (done) {
   done();
 };
 
-//assert get a number is returning a number 111
+// ✅ assert get a number is returning a number 111
 _app.tests.unit['lib.getNumber should return 111'] = function (done) {
   //when test is done running it should return : done(convention)
   const val = lib.getNumber();
@@ -67,7 +67,7 @@ _app.tests.unit[
   done();
 };
 
-// Count all the tests
+// 🧮 Count all the tests
 _app.countTests = function () {
   let counter = 0;
   for (const key in _app.tests) {
@@ -83,7 +83,7 @@ _app.countTests = function () {
   return counter;
 };
 
-//run all the tests, collecting the errors and successes
+// 🏃‍♀️ run all the tests, collecting the errors and successes
 _app.runTests = function () {
   const errors = [];
   let successes = 0;
@@ -102,7 +102,7 @@ _app.runTests = function () {
             try {
               testValue(function () {
                 //if it calls back : without throwing : it succeeded
-                console.log('\x1b[32m%s\x1b[0m', tempTestName);
+                console.log('\x1b[32m%s\x1b[0m', '✅ ' + tempTestName);
                 counter++;
                 successes++;
                 if (counter == limit) {
@@ -114,7 +114,7 @@ _app.runTests = function () {
                 name: testName,
                 error: e,
               });
-              console.log('\x1b[31m%s\x1b[0m', tempTestName);
+              console.log('\x1b[31m%s\x1b[0m', '❌ ' + tempTestName);
               counter++;
               if (counter == limit) {
                 _app.produceTestReport(limit, successes, errors);
@@ -127,7 +127,7 @@ _app.runTests = function () {
   }
 };
 
-// Product a test outcome report
+// 📝 Product a test outcome report
 _app.produceTestReport = function (limit, successes, errors) {
   console.log('');
   console.log('--------BEGIN TEST REPORT--------');
@@ -142,7 +142,7 @@ _app.produceTestReport = function (limit, successes, errors) {
     console.log('--------BEGIN ERROR DETAILS--------');
     console.log('');
     errors.forEach(function (testError) {
-      console.log('\x1b[31m%s\x1b[0m', testError.name);
+      console.log('\x1b[31m%s\x1b[0m', '❌ ' + testError.name);
       console.log(testError.error);
       console.log('');
     });
@@ -154,5 +154,5 @@ _app.produceTestReport = function (limit, successes, errors) {
   console.log('--------END TEST REPORT--------');
 };
 
-// Run the tests
+// 🚦 Run the tests
 _app.runTests();
