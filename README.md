@@ -1,4 +1,8 @@
 # 🚀 Simple-JS-Test-Library 📚
+
+![Open Issues](https://img.shields.io/github/issues/Jagoda11/Simple-JS-Test-Library?style=flat-square&color=orange)
+![Last Commit](https://img.shields.io/github/last-commit/Jagoda11/Simple-JS-Test-Library/master?style=flat-square&color=blue)
+
 📝 Homework Assignment #5
 
 ## 📃 Details:
